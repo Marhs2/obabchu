@@ -1,0 +1,907 @@
+/* Food Recommendation Page Styles */
+:root {
+    --primary-color: #ed8d8d;
+    --dark-color: #333;
+    --light-color: #fff;
+    --dark-accent: #723232;
+    --shadow-color: rgba(0, 0, 0, 0.38);
+    --bg-color: #211e22;
+    --input-bg-color: #312c32;
+    --highlight-color: #785a66;
+    --text-color: #e0e0e0;
+    --text-secondary-color: #8c8c8c;
+    --accent-color: #ef4f6a;
+}
+
+.food-main {
+    min-height: 100vh;
+    background: linear-gradient(180deg, rgba(237, 141, 141, 1) 0%, rgba(31, 31, 31, 1) 100%);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Left Sidebar */
+.left-sidebar {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 2rem;
+    z-index: 10;
+}
+
+.selector-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.selector-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-transform: lowercase;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.3s ease;
+}
+
+.selector-btn.active {
+    color: white;
+}
+
+.selector-btn.active .btn-circle {
+    background: var(--primary-color);
+}
+
+.btn-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Center Content */
+.center-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+.food-image-container {
+    width: 100%;
+    height: 100%;
+}
+
+.food-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.food-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    font-weight: 900;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    letter-spacing: 0.3rem;
+    font-family: "Poppins", sans-serif;
+    z-index: 10;
+}
+
+/* Right Sidebar */
+.right-sidebar {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    z-index: 10;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.action-btn-container {
+    margin-bottom: 2rem;
+}
+
+.action-btn {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 1.5rem 2.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: "Poppins", sans-serif;
+    backdrop-filter: blur(10px);
+}
+
+
+.action-btn span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+}
+
+.action-btn small {
+    font-size: 1rem;
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+.food-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: white;
+}
+
+.restaurant-name {
+    font-size: 4rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: "Poppins", sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.food-category {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    font-family: "Poppins", sans-serif;
+}
+
+
+
+/* Decorative elements around the image */
+.image-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.decoration-circle {
+    position: absolute;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: pulse 3s infinite;
+}
+
+.decoration-1 {
+    width: 20px;
+    height: 20px;
+    top: 15%;
+    right: 10%;
+    animation-delay: 0s;
+}
+
+.decoration-2 {
+    width: 15px;
+    height: 15px;
+    bottom: 20%;
+    left: 15%;
+    animation-delay: 1s;
+}
+
+.decoration-3 {
+    width: 25px;
+    height: 25px;
+    top: 60%;
+    right: 20%;
+    animation-delay: 2s;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .food-main {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .left-sidebar,
+    .right-sidebar {
+        position: relative;
+        transform: none;
+        padding: 1rem;
+    }
+
+    .left-sidebar {
+        order: 1;
+    }
+
+    .center-content {
+        position: relative;
+        transform: none;
+        order: 2;
+        margin: 2rem 0;
+    }
+
+    .right-sidebar {
+        order: 3;
+        align-items: center;
+        text-align: center;
+    }
+
+    .selector-buttons {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .selector-btn {
+        font-size: 1.5rem;
+    }
+
+    .btn-circle {
+        width: 30px;
+        height: 30px;
+    }
+
+    .food-image-container {
+        width: 350px;
+        height: 350px;
+    }
+
+    .food-title {
+        font-size: 3rem;
+    }
+
+    .restaurant-name {
+        font-size: 2.5rem;
+    }
+}
+
+.food-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--light-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    letter-spacing: 0.2rem;
+    font-family: "Noto Sans KR", sans-serif;
+    transition: all 0.4s ease;
+    transform-style: preserve-3d;
+    z-index: 10;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    z-index: 10;
+}
+
+.spinner-circle {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--input-bg-color);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.spinner-text {
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Enhanced Rating Display */
+.food-rating {
+    font-size: 1.3rem;
+    color: var(--accent-color);
+    background: var(--input-bg-color);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    border: 1px solid var(--highlight-color);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.food-rating .stars {
+    color: #ffd700;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.food-rating .rating-value {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+/* Button Loading State */
+.action-btn.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.action-btn.loading i {
+    animation: spin 1s linear infinite;
+}
+
+/* Enhanced Image Transitions */
+.food-image-container img {
+    object-fit: cover;
+    border-radius: 50%;
+    transition: all 0.4s ease;
+}
+
+/* Improved Menu Items Animation */
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--input-bg-color);
+    border-radius: 12px;
+    border: 1px solid var(--highlight-color);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    transform-origin: left center;
+}
+
+.food-info {
+    background: var(--bg-color);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    border: 1px solid var(--highlight-color);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+
+/* Improved info header layout */
+.info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.restaurant-name {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0;
+    font-family: "Noto Sans KR", sans-serif;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.food-rating {
+    font-size: 1.3rem;
+    color: var(--accent-color);
+    background: var(--input-bg-color);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    border: 1px solid var(--highlight-color);
+    white-space: nowrap;
+}
+
+/* Improved details section */
+.info-details {
+    margin-bottom: 1.5rem;
+}
+
+.food-category {
+    font-size: 1.2rem;
+    color: var(--text-secondary-color);
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.location-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.food-address,
+.food-phone {
+    color: var(--text-secondary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: var(--input-bg-color);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+
+.food-address i,
+.food-phone i {
+    color: var(--primary-color);
+    width: 16px;
+}
+
+.food-menu {
+    margin-top: 2rem;
+}
+
+.food-menu h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.food-menu h3 i {
+    color: var(--accent-color);
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--input-bg-color);
+    border-radius: 12px;
+    border: 1px solid var(--highlight-color);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(237, 141, 141, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+
+.menu-name {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.menu-price {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    background: linear-gradient(45deg, var(--highlight-color), var(--primary-color));
+    color: var(--light-color);
+    border: none;
+    border-radius: 15px;
+    padding: 1.5rem 3rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 200px;
+    box-shadow: 0 10px 25px var(--shadow-color);
+    font-family: "Poppins", sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+
+
+
+
+.action-btn i {
+    font-size: 2rem;
+}
+
+.action-btn span {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+.action-btn small {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    font-weight: 400;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .food-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .food-image-container {
+        height: 400px;
+    }
+
+    .food-title {
+        font-size: 2.5rem;
+    }
+
+    .restaurant-name {
+        font-size: 2rem;
+    }
+
+    .selector-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .selector-btn {
+        width: 200px;
+        justify-content: center;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .action-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .info-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .food-rating {
+        align-self: flex-end;
+    }
+
+    .decoration-1 {
+        width: 15px;
+        height: 15px;
+        top: 10%;
+        right: 5%;
+    }
+
+    .decoration-2 {
+        width: 12px;
+        height: 12px;
+        bottom: 15%;
+        left: 10%;
+    }
+
+    .decoration-3 {
+        width: 18px;
+        height: 18px;
+        top: 55%;
+        right: 15%;
+    }
+}
+
+@media (max-width: 480px) {
+    .food-main {
+        padding: 1rem 0;
+    }
+
+    .food-selector,
+    .food-display {
+        padding: 0 1rem;
+    }
+
+    .food-info {
+        padding: 1.5rem;
+    }
+
+    .restaurant-name {
+        font-size: 1.8rem;
+    }
+
+    .food-title {
+        font-size: 2rem;
+    }
+
+    .selector-btn {
+        width: 100%;
+        max-width: 250px;
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+/* Accessibility Improvements */
+.selector-btn:focus,
+.action-btn:focus {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.menu-item:focus-within {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(239, 79, 106, 0.2);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .decoration-circle {
+        border-color: var(--accent-color);
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .selector-btn {
+        border-width: 3px;
+    }
+
+    .food-info {
+        border-width: 2px;
+    }
+
+    .menu-item {
+        border-width: 2px;
+    }
+}
+
+/* Animation preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .decoration-circle {
+        animation: none;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.food-container.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Animation for food change */
+.food-container.changing {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.food-container.changing.loaded {
+    opacity: 1;
+}
+
+/* Keyboard shortcuts hints */
+.keyboard-hint {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--accent-color);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* Notifications */
+.notification {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--highlight-color);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 10px 25px var(--shadow-color);
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    max-width: 300px;
+}
+
+.notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.notification-success {
+    border-color: #10b981;
+}
+
+.notification-success i {
+    color: #10b981;
+}
+
+.notification-info {
+    border-color: var(--accent-color);
+}
+
+.notification-info i {
+    color: var(--accent-color);
+}
+
+/* Favorite button */
+.favorite-btn {
+    background: linear-gradient(45deg, var(--input-bg-color), var(--highlight-color));
+}
+
+.favorite-btn.active {
+    background: linear-gradient(45deg, #dc2626, var(--accent-color));
+}
+
+
+
+/* Enhanced selector buttons with better feedback */
+.selector-btn {
+    background: var(--input-bg-color);
+    border: 2px solid var(--highlight-color);
+    border-radius: 50px;
+    padding: 1rem 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-transform: lowercase;
+    font-family: "Poppins", sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.selector-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(237, 141, 141, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+
+/* Improved loading states */
+.food-container.loading {
+    opacity: 0.6;
+    pointer-events: none;
+    filter: blur(2px);
+}
+
+
+
+
+/* Smooth scrolling for mobile */
+@media (max-width: 768px) {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .notification {
+        top: 1rem;
+        right: 1rem;
+        left: 1rem;
+        max-width: none;
+    }
+}

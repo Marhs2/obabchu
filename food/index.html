@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오밥추 - 음식 추천</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/food-style.css">
+</head>
+
+<body>
+    <header>
+        <a href="../index.html">
+            <img src="../images/logo.png" alt="Ohbabchu Logo" />
+        </a>
+        <nav>
+            <ul>
+                <li><a href="../member/login.html">login</a></li>
+                <li><a href="../member/register.html">membership</a></li>
+                <li><a href="../index.html">home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="food-main">
+        <div class="left-sidebar">
+            <div class="selector-buttons">
+                <button class="selector-btn active" data-type="random">
+                    <span class="btn-circle"></span>
+                    <span>random</span>
+                </button>
+                <button class="selector-btn" data-type="menu">
+                    <span class="btn-circle"></span>
+                    <span>menu</span>
+                </button>
+                <button class="selector-btn" data-type="breakdown">
+                    <span class="btn-circle"></span>
+                    <span>breakdown</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="center-content">
+            <div class="food-image-container">
+                <img id="foodImage" src="../images/RANDOM.png" alt="음식 이미지">
+
+            </div>
+        </div>
+
+        <div class="right-sidebar">
+            <div class="action-btn-container">
+                <button class="action-btn random-btn" onclick="getRandomFood()">
+                    <span>RANDOM</span>
+                    <small>recommend it at random</small>
+                </button>
+            </div>
+
+            <div class="food-info">
+                <div class="restaurant-name" id="restaurantName">Ohbabchu</div>
+                <div class="food-category" id="foodCategory">Today's meal recommendation</div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../script/foodSelect.js"></script>
+</body>
+
+</html>
