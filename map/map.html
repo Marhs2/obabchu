@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오늘 뭐 먹지? - 랜덤 음식 추천</title>
+  <link rel="stylesheet" href="../style/map.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d5d7efa1ad41628743fc4719d62b9b2b"></script>
+</head>
+
+<body>
+
+  <iframe src="https://map.kakao.com" frameborder="0" width="100%" height="500pxs" class="map"></iframe>
+
+  <div class="container">
+    <section class="control-panel">
+      <h1>오늘 뭐 먹지? <br><span>고민은 그만!</span></h1>
+      <p>버튼을 눌러 운명의 메뉴를 추천받으세요.</p>
+      <button class="random-btn" onclick="random()">
+        <i class="fa-solid fa-dice-d20"></i> 추천 받기
+      </button>
+    </section>
+
+    <section class="food-display">
+      <div class="food-image-wrapper">
+        <img src="./img/한식.webp" alt="음식 이미지">
+      </div>
+    </section>
+
+    <section class="info-panel">
+      <h2>추천 맛집 정보</h2>
+      <div class="restaurant-info">
+        <p>맛집을 추천받으세요!</p>
+      </div>
+      <div class="disclaimer">
+        <h3>위치가 정확하지 않을 수 있습니다.</h3>
+        <p>만약 불이익이 생겨도 저희는 책임이 없습니다.</p>
+      </div>
+    </section>
+
+
+    <section class="menu-info">
+      <h2>메뉴 정보</h2>
+      <div class="menu-list">
+        <div class="menu-item">
+          <h3>김치찌개</h3>
+          <p class="price">8,000원</p>
+          <p class="desc">얼큰하고 깊은 맛의 김치찌개입니다.</p>
+        </div>
+        <div class="menu-item">
+          <h3>불고기</h3>
+          <p class="price">10,000원</p>
+          <p class="desc">달콤하고 부드러운 불고기입니다.</p>
+        </div>
+        <div class="menu-item">
+          <h3>비빔밥</h3>
+          <p class="price">7,000원</p>
+          <p class="desc">신선한 야채와 고기가 어우러진 비빔밥입니다.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="./js.js"></script>
+</body>
+
+</html>

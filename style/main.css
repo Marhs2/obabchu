@@ -1,0 +1,41 @@
+:root {
+    --primary-color: #ed8d8d;
+    --dark-color: #333;
+    --light-color: #fff;
+    --dark-accent: #723232;
+    --shadow-color: rgba(0, 0, 0, 0.38);
+
+    --spacing-md: 20px;
+    --spacing-lg: 50px;
+    --spacing-xl: 100px;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+    object-fit: cover;
+}

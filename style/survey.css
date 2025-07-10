@@ -1,0 +1,227 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 16px;
+    margin: 0;
+}
+
+.product-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #000000;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    max-width: 1152px;
+    width: 100%;
+    overflow: hidden;
+
+    @media (min-width: 1024px) {
+        flex-direction: row;
+    }
+}
+
+.product-image-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+
+    @media (min-width: 1024px) {
+        width: 50%;
+    }
+}
+
+.product-image {
+    border-radius: 8px;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+}
+
+.product-details-section {
+    width: 100%;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (min-width: 1024px) {
+        width: 50%;
+    }
+}
+
+.product-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.product-subtitle {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #d1d5db;
+}
+
+.option-boxes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    @media (min-width: 640px) {
+        flex-direction: row;
+    }
+}
+
+.option-box {
+    flex: 1;
+    background-color: #3a3a3a;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+
+.item-list-container .list-item:hover {
+    background-color: #4a3a3a;
+}
+
+.item-list-container .list-item {
+    background-color: #3a3a3a;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.item-list-container .list-item:hover {
+    background-color: #4a3a3a;
+}
+
+.option-box:hover {
+    background-color: #4a3a3a;
+}
+
+.option-box-1 {
+    background-color: #3a3a3a;
+}
+
+.option-box-2 {
+    background-color: #3a3a3a;
+}
+
+
+.hidden-checkbox {
+    display: none;
+}
+
+.checkbox-checkmark {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #9ca3af;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+}
+
+.custom-checkbox:checked+.checkbox-checkmark {
+    background-color: #d97706;
+    border-color: #d97706;
+}
+
+.custom-checkbox:checked+.checkbox-checkmark .checkmark-icon {
+    display: block;
+}
+
+.checkmark-icon {
+    display: none;
+    width: 12px;
+    height: 12px;
+    color: #ffffff;
+}
+
+.option-text-main {
+    color: #e5e7eb;
+    font-size: 18px;
+}
+
+.option-text-sub {
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+.item-list-container {
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.list-item {
+    background-color: #2a2a2a;
+    border-radius: 6px;
+    padding: 12px;
+    color: #d1d5db;
+}
+
+.bottom-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.progress-bar-container {
+    width: 96px;
+    height: 4px;
+    background-color: #4b5563;
+    border-radius: 9999px;
+    position: relative;
+    opacity: 0;
+}
+
+.progress-bar-fill {
+    width: 25%;
+    height: 100%;
+    background-color: #ec4899;
+    border-radius: 9999px;
+}
+
+.progress-bar-dot {
+    position: absolute;
+    left: -4px;
+    top: -4px;
+    width: 12px;
+    height: 12px;
+    background-color: #ec4899;
+    border-radius: 9999px;
+}
+
+.next-button {
+    background-color: #db2777;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 12px 32px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    font-weight: bold;
+    transition: background-color 300ms ease-in-out;
+    border: none;
+    cursor: pointer;
+}
+
+.next-button:hover {
+    background-color: #be185d;
+}
