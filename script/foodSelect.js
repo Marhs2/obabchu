@@ -8,10 +8,15 @@ btns.forEach(btn => {
         const foodImage = document.querySelector('.food-image-container img');
         foodImage.src = `../images/${food}.png`;
         foodImage.alt = `${food} image`;
-        activeBtn.innerHTML = `
-            <span>${food.toUpperCase()}</span>
-            <small>recommend it at ${food.toUpperCase()}</small>`;
+        if (food == "random") {
+            activeBtn.innerHTML = `
+                <span>Random</span>
+                <small><a href="../map/map.html">recommend it at Random</a></small>`;
 
-
-    });
-});
+        } else {
+            activeBtn.innerHTML = `
+                <span>MENU</span>
+                <small><a href="../map/mapSelect.html">recommend it at MENU</a></small>`;
+        }
+    })
+})
