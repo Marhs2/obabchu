@@ -58,6 +58,8 @@
 *::before,
 *::after { box-sizing: border-box; }
 
+[hidden] { display: none !important; }
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -448,7 +450,8 @@ input[type="range"] {
   flex: 0 0 auto;
 }
 .loc-status.ok .dot { background: var(--ok); }
-.loc-status.warn .dot { background: var(--chili); }
+  .loc-status.warn .dot { background: var(--chili); }
+#useCentroidBtn { margin-top: 10px; }
 
 .result-panel { min-height: 280px; }
 .state {
@@ -465,6 +468,7 @@ input[type="range"] {
   color: var(--ink);
   margin: 0 0 8px;
 }
+.state .reco-actions { justify-content: center; }
 
 .reco-card {
   display: grid;
@@ -729,6 +733,8 @@ input[type="range"] {
 
 @media (max-width: 879px) {
   :root { --dock-h: 56px; }
+  .nav-tools .btn-primary { display: none; }
+  .reco-photo { height: 180px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

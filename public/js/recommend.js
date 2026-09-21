@@ -37,13 +37,22 @@ function setMode(mode, categories) {
 function setLocStatus(loc) {
   const box = document.getElementById('locStatus');
   const txt = document.getElementById('locText');
+  const fallbackBtn = document.getElementById('useCentroidBtn');
   if (loc.precise) {
     box.className = 'loc-status ok';
     txt.textContent = `현재 위치 기준 (${loc.lat.toFixed(4)}, ${loc.lng.toFixed(4)})`;
+    if (fallbackBtn) fallbackBtn.hidden = false;
   } else {
     box.className = 'loc-status warn';
     txt.textContent = '위치 권한 없음. 용산 일대 기준으로 추천합니다.';
+    if (fallbackBtn) fallbackBtn.hidden = true;
   }
+}
+
+async function useYongsanCentroid() {
+  const cfg = await loadConfig();
+  state.loc = { ...cfg.centroid, precise: false };
+  setLocStatus(state.loc);
 }
 
 function menuHtml(menu) {
@@ -147,14 +156,24 @@ async function saveHistory(data, notify) {
   }
 }
 
-function showResultState(title, message, actionLabel) {
+function showResultState(title, message, actionLabel, useYongsan) {
   const action = actionLabel
     ? `<button type="button" class="btn btn-primary" id="retryBtn">${actionLabel}</button>`
     : '';
+  const yongsan = useYongsan
+    ? `<button type="button" class="btn btn-ghost" id="retryYongsanBtn">용산 일대로 다시 찾기</button>`
+    : '';
   document.getElementById('resultArea').innerHTML =
-    `<div class="state"><div><h3>${title}</h3><p>${message}</p>${action}</div></div>`;
+    `<div class="state"><div><h3>${title}</h3><p>${message}</p><div class="reco-actions">${action}${yongsan}</div></div></div>`;
   const retry = document.getElementById('retryBtn');
   if (retry) retry.addEventListener('click', runRecommend);
+  const yongsanBtn = document.getElementById('retryYongsanBtn');
+  if (yongsanBtn) {
+    yongsanBtn.addEventListener('click', async () => {
+      await useYongsanCentroid();
+      runRecommend();
+    });
+  }
 }
 
 async function runRecommend() {
@@ -178,7 +197,7 @@ async function runRecommend() {
     const data = await api('/api/recommend?' + params.toString());
     renderResult(data);
   } catch (e) {
-    showResultState('추천을 만들지 못했습니다', escapeHtml(e.message), '다시 시도');
+    showResultState('추천을 만들지 못했습니다', escapeHtml(e.message), '다시 시도', state.loc && state.loc.precise);
     document.getElementById('mapArea').innerHTML = '';
   } finally {
     btn.disabled = false;
@@ -209,6 +228,7 @@ async function runRecommend() {
     });
 
     document.getElementById('recoBtn').addEventListener('click', runRecommend);
+    document.getElementById('useCentroidBtn').addEventListener('click', useYongsanCentroid);
 
     state.loc = await getLocation();
     setLocStatus(state.loc);
