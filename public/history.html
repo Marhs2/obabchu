@@ -3,23 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>추천 기록 — 오밥추</title>
+  <title>추천 기록: 오밥추</title>
+  <script>
+    (function () {
+      var t = localStorage.getItem('obabchu-theme');
+      if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-  <main class="page">
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <main id="main" class="page">
     <div class="container">
-      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;margin-bottom:24px">
+      <div class="page-head">
         <div>
-          <h1 class="page-title">추천 기록 🕘</h1>
-          <p class="page-sub" style="margin:0">그동안 추천받은 식당들을 모아봤어요.</p>
+          <h1 class="page-title">추천 기록</h1>
+          <p class="page-sub">로그인한 계정에 저장된 추천입니다. 최신 순으로 보입니다.</p>
         </div>
-        <button class="btn btn-danger" id="clearBtn" style="display:none">전체 삭제</button>
+        <button type="button" class="btn btn-danger" id="clearBtn" hidden>기록 모두 삭제</button>
       </div>
-      <div id="historyArea"></div>
+      <div id="historyArea" aria-live="polite"></div>
     </div>
   </main>
   <script src="/js/common.js"></script>

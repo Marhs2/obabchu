@@ -3,31 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>회원가입 — 오밥추</title>
+  <title>회원가입: 오밥추</title>
+  <script>
+    (function () {
+      var t = localStorage.getItem('obabchu-theme');
+      if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-  <div class="auth-wrap">
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <main id="main" class="auth-wrap">
     <form class="auth-card" id="registerForm">
       <h1>회원가입</h1>
-      <p class="sub">추천 기록을 저장하려면 가입이 필요해요 ✨</p>
+      <p class="sub">추천 기록을 남기려면 계정이 필요합니다. 아이디 3자, 비밀번호 4자 이상입니다.</p>
+      <p class="form-error" id="formError" role="alert"></p>
       <div class="field">
-        <label>아이디 <span style="color:var(--text-mute)">(3자 이상)</span></label>
-        <input type="text" id="username" autocomplete="username" placeholder="아이디" required />
+        <label for="username">아이디 (3자 이상)</label>
+        <input type="text" id="username" name="username" autocomplete="username" minlength="3" required />
       </div>
       <div class="field">
-        <label>비밀번호 <span style="color:var(--text-mute)">(4자 이상)</span></label>
-        <input type="password" id="password" autocomplete="new-password" placeholder="비밀번호" required />
+        <label for="password">비밀번호 (4자 이상)</label>
+        <input type="password" id="password" name="password" autocomplete="new-password" minlength="4" required />
       </div>
-      <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn">회원가입</button>
-      <p class="auth-foot">이미 계정이 있으신가요? <a href="/login.html">로그인</a></p>
+      <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn">계정 만들기</button>
+      <p class="auth-foot">이미 계정이 있으면 <a href="/login.html">로그인</a></p>
     </form>
-  </div>
+  </main>
   <script src="/js/common.js"></script>
   <script src="/js/auth.js"></script>
-  <script>initAuthPage('register');</script>
+  <script>renderHeader(); initAuthPage('register');</script>
 </body>
 </html>
