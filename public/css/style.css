@@ -255,7 +255,7 @@ a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; 
 .btn-block { width: 100%; }
 .btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
 
-.page { padding: 24px 0 48px; }
+.page { padding: 24px 0 calc(48px + var(--dock-h)); }
 .page-title {
   font-family: var(--font-serif);
   font-size: clamp(1.6rem, 5vw, 2.2rem);
@@ -329,6 +329,7 @@ a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; 
 .footer {
   border-top: 1px solid var(--rule);
   padding: 24px 0 32px;
+  margin-bottom: calc(var(--dock-h) + env(safe-area-inset-bottom));
   color: var(--ink-faint);
   font-size: 0.9rem;
 }
