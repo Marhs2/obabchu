@@ -7,27 +7,7 @@ let state = {
   lastResult: null,
 };
 
-let kakaoLoaded = false;
-let kakaoFailed = false;
-
-function loadKakao(jsKey) {
-  return new Promise((resolve) => {
-    if (kakaoLoaded) return resolve(true);
-    if (kakaoFailed) return resolve(false);
-    const s = document.createElement('script');
-    s.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${jsKey}&autoload=false`;
-    s.onload = () => {
-      if (window.kakao && window.kakao.maps) {
-        window.kakao.maps.load(() => { kakaoLoaded = true; resolve(true); });
-      } else {
-        kakaoFailed = true; resolve(false);
-      }
-    };
-    s.onerror = () => { kakaoFailed = true; resolve(false); };
-    document.head.appendChild(s);
-    setTimeout(() => { if (!kakaoLoaded) { kakaoFailed = true; resolve(false); } }, 5000);
-  });
-}
+let leafletMap = null;
 
 function renderCategories(categories) {
   const chips = document.getElementById('catChips');
@@ -121,25 +101,28 @@ function renderResult(data) {
   if (OB.user) saveHistory(data, false);
 }
 
-async function renderMap(r) {
+function renderMap(r) {
   const mapArea = document.getElementById('mapArea');
-  if (r.lat == null || r.lng == null) { mapArea.innerHTML = ''; return; }
-  mapArea.innerHTML = '<div id="map"></div>';
-  const cfg = await loadConfig();
-  const ok = await loadKakao(cfg.kakaoJsKey);
-  if (!ok) {
+  if (r.lat == null || r.lng == null) { mapArea.innerHTML = ''; leafletMap = null; return; }
+
+  if (!window.L) {
     mapArea.innerHTML = `<div id="map"><div class="map-fallback">🗺️ 지도를 불러올 수 없어요.<br />${r.kakaoUrl ? `<a class="btn btn-ghost" style="margin-top:12px" href="${r.kakaoUrl}" target="_blank" rel="noopener">카카오맵에서 위치 보기</a>` : ''}</div></div>`;
     return;
   }
-  const el = document.getElementById('map');
-  const pos = new kakao.maps.LatLng(r.lat, r.lng);
-  const map = new kakao.maps.Map(el, { center: pos, level: 4 });
-  const marker = new kakao.maps.Marker({ position: pos });
-  marker.setMap(map);
-  const iw = new kakao.maps.InfoWindow({
-    content: `<div style="padding:6px 10px;font-size:12px;color:#222">${escapeHtml(r.name)}</div>`,
-  });
-  iw.open(map, marker);
+
+  // Re-create the map container each time to avoid Leaflet re-init issues.
+  mapArea.innerHTML = '<div id="map"></div>';
+  leafletMap = L.map('map', { scrollWheelZoom: false }).setView([r.lat, r.lng], 16);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap',
+  }).addTo(leafletMap);
+  const popup = `<b>${escapeHtml(r.name)}</b><br />${escapeHtml(r.category)}${
+    r.kakaoUrl ? `<br /><a href="${r.kakaoUrl}" target="_blank" rel="noopener">카카오맵에서 보기 →</a>` : ''
+  }`;
+  L.marker([r.lat, r.lng]).addTo(leafletMap).bindPopup(popup).openPopup();
+  // Ensure tiles render correctly after layout settles.
+  setTimeout(() => leafletMap && leafletMap.invalidateSize(), 200);
 }
 
 async function saveHistory(data, notify) {
