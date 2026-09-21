@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>오밥추 — 오늘 밥 뭐 먹지?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main>
+    <section class="hero container">
+      <span class="eyebrow">📍 실시간 내 주변 맛집 추천</span>
+      <h1>오늘 밥 뭐 먹지?<br /><span class="grad">고민은 오밥추에게.</span></h1>
+      <p class="lead">현재 위치를 기준으로 실시간으로 주변 식당을 불러와, 랜덤 또는 예산·카테고리 맞춤으로 메뉴를 추천해드려요.</p>
+      <div class="hero-actions">
+        <a href="/recommend.html" class="btn btn-primary btn-lg">🎲 추천 받으러 가기</a>
+        <a href="#features" class="btn btn-ghost btn-lg">기능 살펴보기</a>
+      </div>
+    </section>
+
+    <section class="section container" id="features">
+      <div class="section-head">
+        <h2>오밥추의 세 가지 기능</h2>
+        <p>필요한 방식으로 오늘의 메뉴를 골라보세요.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="feature-icon">🎲</div>
+          <h3>랜덤 추천</h3>
+          <p>버튼 한 번이면 내 주변 식당 중 하나를 랜덤으로 추천해드려요. 메뉴 고민 끝!</p>
+        </div>
+        <div class="card">
+          <div class="feature-icon">🍽️</div>
+          <h3>카테고리·예산 추천</h3>
+          <p>먹고 싶은 종류와 예산을 정하면, 그 조건에 맞는 식당과 메뉴만 골라 추천해요.</p>
+        </div>
+        <div class="card">
+          <div class="feature-icon">🕘</div>
+          <h3>추천 기록</h3>
+          <p>로그인하면 추천받은 식당이 자동으로 기록돼요. 지난 추천을 다시 확인해보세요.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-head">
+        <h2>이렇게 작동해요</h2>
+        <p>3단계면 충분합니다.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card"><div class="feature-icon">1️⃣</div><h3>위치 확인</h3><p>브라우저 위치 정보로 내 주변을 파악해요. (거부 시 용산 일대 기준)</p></div>
+        <div class="card"><div class="feature-icon">2️⃣</div><h3>조건 선택</h3><p>랜덤이면 바로 추천, 맞춤이면 카테고리와 예산만 골라주세요.</p></div>
+        <div class="card"><div class="feature-icon">3️⃣</div><h3>추천 & 지도</h3><p>추천 식당의 메뉴·평점·위치를 지도에서 바로 확인하세요.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">오밥추 · 실시간 위치 기반 맛집 추천 · Express + SQLite</div>
+  </footer>
+
+  <script src="/js/common.js"></script>
+  <script>renderHeader('home');</script>
+</body>
+</html>
