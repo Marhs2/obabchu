@@ -1,0 +1,17 @@
+{
+  "name": "오밥추 (Obabchu)",
+  "install": "npm ci",
+  "terminals": [
+    {
+      "name": "server",
+      "command": "npm start",
+      "description": "오밥추 Express + SQLite 서버 (http://localhost:3000)"
+    }
+  ],
+  "ports": [
+    {
+      "name": "web",
+      "port": 3000
+    }
+  ]
+}
