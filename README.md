@@ -10,7 +10,7 @@
 - **🍽️ 카테고리·예산 추천** — 원하는 음식 종류와 1인 예산에 맞는 식당·메뉴만 필터링해 추천
 - **🕘 추천 기록** — 로그인 시 추천받은 식당이 자동 저장 (조회/삭제)
 - **👤 회원가입 / 로그인** — bcrypt 비밀번호 해싱 + JWT(httpOnly 쿠키) 세션
-- **🗺️ 지도 표시** — 카카오맵 SDK로 추천 식당 위치를 지도에 표시
+- **🗺️ 지도 표시** — Leaflet + OpenStreetMap으로 추천 식당 위치를 지도에 표시 (API 키 불필요, 어디서나 렌더링). 카카오맵 상세 링크도 함께 제공
 
 ## 🔴 실시간 데이터
 
@@ -39,14 +39,13 @@ npm start
 | --- | --- | --- |
 | `PORT` | `3000` | 서버 포트 |
 | `KAKAO_REST_API_KEY` | (없음) | 설정 시 카카오 로컬 API 실시간 검색 활성화 |
-| `KAKAO_JS_KEY` | 데모용 공개 JS 키 | 지도 렌더링용 카카오 JS SDK 키 |
 | `JWT_SECRET` | 개발용 기본값 | 프로덕션에서는 반드시 설정 |
 | `OBABCHU_DB_PATH` | `data/obabchu.db` | SQLite DB 파일 경로 |
 
 ## 🧱 기술 스택 & 구조
 
 - **Backend**: Node.js 20+, Express 4, better-sqlite3, bcryptjs, jsonwebtoken
-- **Frontend**: Vanilla JS (프레임워크 없음), 모던 다크 UI, 카카오맵 SDK
+- **Frontend**: Vanilla JS (프레임워크 없음), 모던 다크 UI, Leaflet(OpenStreetMap) 지도
 - **DB**: SQLite (`users`, `history`)
 
 ```

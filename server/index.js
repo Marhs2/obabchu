@@ -13,9 +13,6 @@ restaurants.loadSeed();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Public JavaScript key for the Kakao Maps SDK (client-side map rendering only).
-const KAKAO_JS_KEY = process.env.KAKAO_JS_KEY || 'd5d7efa1ad41628743fc4719d62b9b2b';
-
 app.use(express.json());
 app.use(cookieParser());
 
@@ -26,7 +23,6 @@ function num(v) {
 
 app.get('/api/config', (_req, res) => {
   res.json({
-    kakaoJsKey: KAKAO_JS_KEY,
     kakaoLive: restaurants.kakaoEnabled(),
     categories: restaurants.getCategories(),
     centroid: restaurants.getCentroid(),
